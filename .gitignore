@@ -1,0 +1,36 @@
+# .gitignore for SOVRAN-CRT-VM
+# Raw local captures that may contain identifiers go through sanitization
+# before landing in evidence/. Keep these out of the tree entirely.
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets and private material (see docs/SECURITY.md)
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.env
+*.env
+
+# VM disk images and large binaries (never commit)
+*.qcow2
+*.img
+*.iso
+*.vmdk
+*.vhd
+
+# Local unsanitized evidence dumps
+evidence/**/raw-unsanitized/
