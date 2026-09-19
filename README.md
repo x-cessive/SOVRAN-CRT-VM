@@ -45,6 +45,8 @@ Linux Host (SOVRAN-1)
 - Host node: SOVRAN-1, HP Z840 workstation, dual Xeon, AMD RX 6700 XT, 64 GB-class memory.
 - Host OS direction: Linux / Omarchy. Windows preservation is **not** required on this node.
 - Legacy GPU observations (visual only, **not** authoritative): MSI branding; PCIe interface; passive heatsink (no fan); native VGA + DVI + round TV/S-Video-style output; no auxiliary PCIe power connector → low-power card.
+- **2026-09-19, `lspci -nn`: the legacy GPU is not currently enumerated on the PCI bus.** Only the RX 6700 XT (`1002:73df`) and its audio function are present. See [evidence/pci/2026-09-19-pci-enumeration.md](evidence/pci/2026-09-19-pci-enumeration.md). Does not confirm the card's physical absence — only that it isn't link-trained/visible to the OS right now.
+- **2026-09-19: CPU virtualization (Intel VT-x) present; `/sys/kernel/iommu_groups/` is empty and the kernel cmdline lacks `intel_iommu=on`.** IOMMU/VFIO is not usable in the current boot state. See [evidence/iommu/2026-09-19-iommu-and-virt-capability.md](evidence/iommu/2026-09-19-iommu-and-virt-capability.md).
 - The RX 6700 XT remains the host's primary GPU and is never handed to a guest.
 - LICENSE_STATUS=UNKNOWN — no license selected yet; do not assume one.
 
